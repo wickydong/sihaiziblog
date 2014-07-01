@@ -1,0 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+	</head>
+	<body>
+	    <h2>hi,{{ user }}</h2>
+		<ul>
+			<li><a href="/edit?chose=write&user={{ user }}" class="button button-flat-highlight">写</li>
+			<li><a href="/edit?chose=modify" class="button button-flat-highlight">改</li>
+			<li><a href="/edit?chose=delete" class="button button-flat-highlight">删</li>
+			<li><a href="/logout" class="button button-flat-highlight">退</li>
+		</ul>
+	</body>
+</html>
