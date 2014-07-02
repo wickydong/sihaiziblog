@@ -82,5 +82,12 @@ def index():
 def about():
     return render_template("about.html")
 
+@app.route("/shangchuan",methods=["POST"])
+def shangchuan():
+    if request.method == "POST":
+        times = str(date.today())
+        f = request.files["file"]
+        f.save("./static/"+ times)
+        return render_template("test.html",times=times)
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=8080,debug=True)

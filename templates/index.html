@@ -1,10 +1,12 @@
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="static/index.css" />
 		<title>那年那个死孩子</title>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8">
 	</head>
 	<body>
-		<div>
+		<div class="bigdiv">
+		<div class="bigdiv">
 			<ul style="list-style-type:none;">
 				<li>
 					<a href="/">首页</a>
@@ -17,12 +19,13 @@
 				</li>
 			</ul>
 		</div>
-	     <pre>
-		 </pre> 
 	    {% for i in mess %}
-		<p>{{i[0]|safe}}	
-		<p>{{i[1]|safe}}</p>
-		<p>by {{i[2]|safe}} in {{i[3]|safe}}</p>
+		<div class="bigdiv">
+		<p>{{i[0]|safe}}</p>
+		<span class="content">{{i[1]|safe}}</span>
+		<p class="author">by {{i[2]|safe}} in {{i[3]|safe}}</p>
+		</div>
 		{% endfor %}
+		</div>
 	</body>
 </html>

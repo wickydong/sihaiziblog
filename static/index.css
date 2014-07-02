@@ -1,0 +1,22 @@
+body {
+	text-align:center;
+	background: url(/static/background.jpg) fixed 0 0;
+	background-size:cover;}
+.bigdiv {
+		margin:auto;
+		width:600px;
+		}
+ul:after{
+		content: '';
+		display: table;
+		clear: both;
+		}
+li {float:left;
+	padding:0;
+	margin:10px;}
+.content{
+		text-align:left;
+		}
+.author{
+		text-align:right;}
+
