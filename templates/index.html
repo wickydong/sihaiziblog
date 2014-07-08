@@ -22,10 +22,13 @@
 	    {% for i in mess %}
 		<div class="bigdiv">
 		<p>{{i[0]|safe}}</p>
+		{% if i[4] != None %}
+		<img src={{i[4]}} width="600px" height="300px" />
+		{% endif %}
 		<span class="content">{{i[1]|safe}}</span>
 		<p class="author">by {{i[2]|safe}} in {{i[3]|safe}}</p>
 		</div>
-		{% endfor %}
+		{% endfor%}
 		</div>
 	</body>
 </html>

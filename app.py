@@ -10,6 +10,7 @@ from datetime import *
 from flaskext.mysql import MySQL
 import sys
 reload(sys)
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 sys.setdefaultencoding('utf8')
 mysql = MySQL()
 app = Flask(__name__)
@@ -48,46 +49,54 @@ def logout():
 
 @app.route("/edit") #后台选择操作
 def edit():
-    cho = request.args.get("chose")
-    user = request.args.get("user")
-    if cho == "write":
-        return render_template("write.html",user=user)
+    if "user" in session:
+        cho = request.args.get("chose")
+        user = request.args.get("user")
+        if cho == "write":
+            return render_template("write.html",user=user)
 
 @app.route("/write",methods=["POST"])
 def write():
+    times = str(date.today())
     title = str(request.form["title"])
     content = str(request.form["content"])
     user = str(request.form["user"])
-    times = str(date.today())
 #    user = request.args.get("user")
  #   print user
     cursor = mysql.get_db().cursor()
     cursor.execute("use sihaizi")
     #cursor.execute("insert into blog(title,article,author,date) values(%s,%s,%s,%s)" %(title,content,user,times))
-    sql = "insert into blog(title,article,author,date) values('%s','%s','%s','%s')" %(title,content,user,times)
+    if request.files["img"]:
+        f = request.files["img"]
+        f.save("./static/"+ times)
+        imgurl = "./static/" +times
+        sql = "insert into blog(title,article,author,date,imgurl) values('%s','%s','%s','%s','%s')" %(title,content,user,times,imgurl)
+    else:
+        sql = "insert into blog(title,article,author,date) values('%s','%s','%s','%s')" %(title,content,user,times)
     cursor.execute(sql)
     mysql.get_db().commit()
     cursor.close()
-    return redirect(url_for(index))
+    return redirect(url_for("index"))
 @app.route("/")  #首页
 def index():
+    number = 0
+    if request.args.get("start"):
+        number = request.args.get("start")
+        number = number - 1    #算法
     cursor = mysql.get_db().cursor()
     cursor.execute("use sihaizi")
-    cursor.execute("select title,article,author,date from blog")
-    mess = cursor.fetchmany(size=10)
-    #print type(mess)
-    return render_template("index.html",mess=mess)#,autoescape=True)
-
+    cursor.execute("select title,article,author,date,imgurl,id from blog limit %s,10" %number)
+    mess = cursor.fetchall()
+    cursor.execute("select count(1) from blog")
+    idsum = cursor.fetchall()
+    if int(idsum) % 10 = 0:
+        page = int(idsum) / 10
+    else:
+        page = int(idsum) / 10 + 1
+    return render_template("index.html",mess=mess,page=page)#,autoescape=True)
 @app.route("/about")
 def about():
     return render_template("about.html")
 
-@app.route("/shangchuan",methods=["POST"])
-def shangchuan():
-    if request.method == "POST":
-        times = str(date.today())
-        f = request.files["file"]
-        f.save("./static/"+ times)
-        return render_template("test.html",times=times)
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=8080,debug=True)

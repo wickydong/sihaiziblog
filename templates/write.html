@@ -11,8 +11,9 @@
 	</head>
 	<body>
 	<div class="container">
-		<form action="/write" method="post">
+		<form action="/write" method="post" enctype="multipart/form-data">
         <input type=text name=title />
+        <input type=file name=img>
 		<textarea name=content>
 		</textarea>
 		<input type="text" name="user" value="{{ user }}">
