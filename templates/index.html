@@ -28,7 +28,17 @@
 		<span class="content">{{i[1]|safe}}</span>
 		<p class="author">by {{i[2]|safe}} in {{i[3]|safe}}</p>
 		</div>
+		</br>
 		{% endfor%}
+		<br/>
+		{% if page > 1 %}
+		{% for start in range(1,page+1) %}
+		<a href="/?start={{start}}">{{start}}</a>
+	    {% endfor %}
+		{% else %} 
+		<a href="/?start=1">{{page}}</a>
+		{% endif %}
+
 		</div>
 	</body>
 </html>

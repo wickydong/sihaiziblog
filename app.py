@@ -81,15 +81,16 @@ def write():
 def index():
     number = 0
     if request.args.get("start"):
-        number = request.args.get("start")
-        number = number - 1    #算法
+        start = request.args.get("start")
+        number = (int(start) - 1) * 10
     cursor = mysql.get_db().cursor()
     cursor.execute("use sihaizi")
     cursor.execute("select title,article,author,date,imgurl,id from blog limit %s,10" %number)
     mess = cursor.fetchall()
     cursor.execute("select count(1) from blog")
     idsum = cursor.fetchall()
-    if int(idsum) % 10 = 0:
+    idsum = idsum[0][0]
+    if int(idsum) % 10 == 0:
         page = int(idsum) / 10
     else:
         page = int(idsum) / 10 + 1
