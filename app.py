@@ -85,7 +85,7 @@ def index():
         number = (int(start) - 1) * 10
     cursor = mysql.get_db().cursor()
     cursor.execute("use sihaizi")
-    cursor.execute("select title,article,author,date,imgurl,id from blog limit %s,10" %number)
+    cursor.execute("select title,article,author,date,imgurl,id from blog order by id desc limit %s,10" %number)
     mess = cursor.fetchall()
     cursor.execute("select count(1) from blog")
     idsum = cursor.fetchall()
@@ -106,7 +106,6 @@ def talk():
     cursor.execute("use sihaizi")
     cursor.execute("select article,author,date,imgurl,id from blog where title='%s'" %title)
     mess = cursor.fetchall()
-    print mess
     return render_template("talk.html",mess=mess,title=title)
 @app.route("/about")
 def about():
