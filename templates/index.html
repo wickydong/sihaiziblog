@@ -21,7 +21,7 @@
 		</div>
 	    {% for i in mess %}
 		<div class="bigdiv">
-		<p>{{i[0]|safe}}</p>
+		<p><a href="/talk?title={{i[0]|safe}}">{{i[0]|safe}}</a></p>
 		{% if i[4] != None %}
 		<img src={{i[4]}} width="600px" height="300px" />
 		{% endif %}
