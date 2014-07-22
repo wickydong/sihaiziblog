@@ -31,7 +31,7 @@ def login():
     if request.method == "POST" or request.method == "GET":
         cursor = mysql.get_db().cursor()
         cursor.execute("use user_message")
-        cursor.execute("select user,passwd from user where id=1")
+        cursor.execute("select user,passwd from user where id=0")
         user,passwd =  cursor.fetchall()[0]
         user = str(user) 
         passwd = str(passwd)
@@ -68,8 +68,8 @@ def write():
     #cursor.execute("insert into blog(title,article,author,date) values(%s,%s,%s,%s)" %(title,content,user,times))
     if request.files["img"]:
         f = request.files["img"]
-        f.save("./static/"+ times)
-        imgurl = "./static/" +times
+        f.save("static/"+ times)
+        imgurl = "static/" +times
         sql = "insert into blog(title,article,author,date,imgurl) values('%s','%s','%s','%s','%s')" %(title,content,user,times,imgurl)
     else:
         sql = "insert into blog(title,article,author,date) values('%s','%s','%s','%s')" %(title,content,user,times)
@@ -95,9 +95,13 @@ def index():
     else:
         page = int(idsum) / 10 + 1
     return render_template("index.html",mess=mess,page=page)#,autoescape=True)
+
+@app.route("/sx")
+def sx():
+    return render_template("sx.html")
 @app.route("/about")
 def about():
     return render_template("about.html")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=8080,debug=True)
+    app.run(host="0.0.0.0",port=8080)
