@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="static/index.css" />
+		<title>那年那个死孩子</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	</head>
+	<body>
+		<div class="bigdiv">
+		<div class="bigdiv">
+			<ul style="list-style-type:none;">
+				<li>
+					<a href="/">首页</a>
+				</li>
+				<li>
+					<a href="/sx">傻X系列</a>
+				</li>
+				<li>
+					<a href="/about">About Me</a>
+				</li>
+			</ul>
+		</div>
+		<div class="bigdiv">
+
+		<p>{{title}}</p>
+		{% for i in mess %}
+		<p>{{i[3]}}</p>
+		{% if i[3] != None %}
+		<img src={{i[3]}} width="600px" height="300px" />
+		{% endif %}
+		<span class="content">{{i[0]|safe}}</span>
+		<p class="author">by {{i[1]|safe}} in {{i[2]|safe}}</p>
+		</div>
+		<!-- 多说评论框 start -->
+			<div class="ds-thread" data-thread-key={{i[4]|safe}} data-title="{{title}}" data-url="/talk?title={{title}}"></div>
+			<!-- 多说评论框 end -->
+			<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+			<script type="text/javascript">
+			var duoshuoQuery = {short_name:"wickydn"};
+				(function() {
+								var ds = document.createElement('script');
+										ds.type = 'text/javascript';ds.async = true;
+												ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+														ds.charset = 'UTF-8';
+																(document.getElementsByTagName('head')[0] 
+																		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+																		 	})();
+																				</script>
+          {% endfor %}
+																				<!-- 多说公共JS代码 end -->
+		</div>
+	</body>
+</html>

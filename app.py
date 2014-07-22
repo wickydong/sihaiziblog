@@ -95,9 +95,19 @@ def index():
     else:
         page = int(idsum) / 10 + 1
     return render_template("index.html",mess=mess,page=page)#,autoescape=True)
+
+@app.route("/talk")
+def talk():
+    title = str(request.args.get("title"))
+    cursor = mysql.get_db().cursor()
+    cursor.execute("use sihaizi")
+    cursor.execute("select article,author,date,imgurl,id from blog where title=%s" %title)
+    mess = cursor.fetchall()
+    print mess
+    return render_template("talk.html",mess=mess,title=title)
 @app.route("/about")
 def about():
     return render_template("about.html")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=8080,debug=True)
+    app.run(host="0.0.0.0",port=8080)
