@@ -96,9 +96,9 @@ def index():
         page = int(idsum) / 10 + 1
     return render_template("index.html",mess=mess,page=page)#,autoescape=True)
 
-@app.route("/sx")
-def sx():
-    return render_template("sx.html")
+@app.route("/links")
+def links():
+    return render_template("links.html")
 @app.route("/talk")
 def talk():
     title = str(request.args.get("title"))
@@ -112,4 +112,4 @@ def about():
     return render_template("about.html")
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=8080,debug=True)
+    app.run(host="0.0.0.0",port=8080)
