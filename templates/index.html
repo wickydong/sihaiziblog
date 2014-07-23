@@ -6,19 +6,20 @@
 	</head>
 	<body>
 		<div class="bigdiv">
-		<div class="bigdiv">
+		<div class="titlediv">
 			<ul style="list-style-type:none;">
 				<li>
-					<a href="/">Index</a>
+					<a class="titlea" href="/">Index</a>
 				</li>
 				<li>
-					<a href="/links">Friends</a>
+					<a class="titlea" href="/links">Friends</a>
 				</li>
 				<li>
-					<a href="/about">About Me</a>
+					<a class="titlea" href="/about">About Me</a>
 				</li>
 			</ul>
 		</div>
+		<br/>
 	    {% for i in mess %}
 		<div class="bigdiv">
 		<p><a href="/talk?title={{i[0]|safe}}">{{i[0]|safe}}</a></p>
@@ -28,9 +29,10 @@
 		<span class="content">{{i[1]|safe}}</span>
 		<p class="author">by {{i[2]|safe}} in {{i[3]|safe}}</p>
 		</div>
-		</br>
+		<br />
+		<br />
 		{% endfor%}
-		<br/>
+		<br />
 		{% if page > 1 %}
 		{% for start in range(1,page+1) %}
 		<a href="/?start={{start}}">{{start}}</a>
@@ -38,11 +40,11 @@
 		{% else %} 
 		<a href="/?start=1">{{page}}</a>
 		{% endif %}
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
 	<p>Copyright 2014 Wicky Stone |  Powered By EC2 Flask</p>
 		</div>
 	</body>

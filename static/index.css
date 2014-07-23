@@ -4,9 +4,31 @@ body {
 	#background: url(/static/background.jpg) fixed 0 0;
 	background-color: #c0c0c0;
 	background-size:cover;}
+a {
+	text-decoration:none;
+	color:#333333;
+  }	
+
+.titlea:link {
+		color:white;
+		}
+.titlea:visited {
+		color:white;
+		}
+.titlea:hover {
+		color:#CCFFFF;
+		}
+.titlea:active {
+		color:#CCFFFF;
+		}
 .bigdiv {
 		margin:auto;
 		width:600px;
+		}
+.titlediv{
+		margin:auto;
+		width:600px;
+		background-color:#666666;
 		}
 ul:after{
 		content: '';
@@ -22,3 +44,15 @@ li {float:left;
 .author{
 		text-align:right;}
 
+a:link {
+		color:#003366;
+		}
+a:visited {
+		color:#003366;
+		}
+a:hover {
+		color:#006699;
+		}
+a:active {
+		color:#006699;
+		}
