@@ -20,9 +20,10 @@
 				</li>
 			</ul>
 		</div>
-		<br/>
+		<br />
+		<br />
 	    {% for i in mess %}
-		<div class="bigdiv">
+		<div class="contentdiv">
 		<p><a href="/talk?title={{i[0]|safe}}">{{i[0]|safe}}</a></p>
 		{% if i[4] != None %}
 		<a href="/talk?title={{i[0]|safe}}"><img src={{i[4]}} width="600px" height="300px" /></a>
