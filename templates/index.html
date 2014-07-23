@@ -24,7 +24,7 @@
 		<div class="bigdiv">
 		<p><a href="/talk?title={{i[0]|safe}}">{{i[0]|safe}}</a></p>
 		{% if i[4] != None %}
-		<img src={{i[4]}} width="600px" height="300px" />
+		<a href="/talk?title={{i[0]|safe}}"><img src={{i[4]}} width="600px" height="300px" /></a>
 		{% endif %}
 		<span class="content">{{i[1]|safe}}</span>
 		<p class="author">by {{i[2]|safe}} in {{i[3]|safe}}</p>
