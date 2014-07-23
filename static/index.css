@@ -56,3 +56,16 @@ a:hover {
 a:active {
 		color:#006699;
 		}
+
+
+
+A img{
+	-webkit-filter:grayscale(1);
+	filter:gray;
+	transition: all 1s;
+		}
+
+a:hover img {
+		 -webkit-filter:grayscale(0);
+	filter: none
+		}
