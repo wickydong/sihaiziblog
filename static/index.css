@@ -1,6 +1,8 @@
 body {
 	text-align:center;
-	background: url(/static/background.jpg) fixed 0 0;
+	font-family: 微软雅黑,serif;
+	#background: url(/static/background.jpg) fixed 0 0;
+	background-color: #c0c0c0;
 	background-size:cover;}
 .bigdiv {
 		margin:auto;
