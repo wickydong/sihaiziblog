@@ -76,6 +76,7 @@ def write():
     cursor.execute(sql)
     mysql.get_db().commit()
     cursor.close()
+    print "ok"
     return redirect(url_for("index"))
 @app.route("/")  #首页
 def index():
