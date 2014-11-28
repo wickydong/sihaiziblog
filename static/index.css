@@ -3,7 +3,11 @@ body {
 	font-family: 微软雅黑,serif;
 	#background: url(/static/background.jpg) fixed 0 0;
 	background-color: #c0c0c0;
-	background-size:cover;}
+	background-size:cover;
+  height:2611px;
+  width:1887px;
+}
+  
 a {
 	text-decoration:none;
 	color:#333333;
@@ -24,6 +28,7 @@ a {
 .bigdiv {
 		margin:auto;
 		width:600px;
+    height:2611px;
 		}
 .contentdiv {
 		margin:auto;
@@ -75,3 +80,13 @@ a:hover img {
 		 -webkit-filter:grayscale(0);
 	filter: none
 		}
+.about_li {
+list-style-type:none;
+float:none;
+} 
+.about_ul {
+list-style-type:none;
+margin:0px;
+padding:0px;
+text-align:left;
+} 
