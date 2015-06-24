@@ -3,7 +3,8 @@
 # author: i@sihaizi.com
 
 #账号存放于user_message库的user中!
-
+#高人。。。小白诚心求拜师 qq：263502242
+import hashlib
 from flask import Flask,render_template,url_for,request,session,redirect
 import MySQLdb
 from datetime import *
@@ -61,7 +62,8 @@ def write():
     title = str(request.form["title"])
     content = str(request.form["content"])
     user = str(request.form["user"])
-#    user = request.args.get("user")
+    print content
+#    user = request.args.get("user"i)
  #   print user
     cursor = mysql.get_db().cursor()
     cursor.execute("use sihaizi")
@@ -112,5 +114,36 @@ def talk():
 def about():
     return render_template("about.html")
 
+@app.route("/message",methods=["POST","GET"])
+def message():
+    if request.method == "GET": 
+        signature = request.args.get("signature")
+        timestamp = request.args.get("timestamp")
+        nonce = request.args.get("nonce")
+        echostr = request.args.get("echostr")
+        messlist = ["wicky",timestamp,nonce]
+        a,b,c = sorted(messlist)
+        mess = hashlib.sha1(str(a)+str(b)+str(c)).hexdigest()
+        if mess == signature:
+            return echostr
+    message = request.data
+    print message
+    return ""
+@app.route("/test")
+def test():
+    return render_template("mark.html")
+@app.route("/monitor")
+def monitor():
+    cpu = request.args.get("cpu")
+    print cpu
+    disk = request.args.get("disk")
+    mem = request.args.get("mem")
+    come = request.args.get("from")
+    cursor = mysql.get_db().cursor()
+    cursor.execute("use sihaizi")
+    cursor.execute("insert into monitor(cpu,disk,mem,come) values('%s','%s','%s','%s')" %(cpu,disk,mem,come))
+    mysql.get_db().commit()
+    cursor.close()
+    return "ok"
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=8080)

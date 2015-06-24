@@ -1,0 +1,11 @@
+{
+    "name":"suMarkdown",
+    "version":"0.0.2",
+    "description":"JS-based Embendded Markdown Editor For Web Developers",
+    "dependencies":{
+        "highlight.js":"8.4",
+        "marked.js":"0.3.2",
+        "jquery":">1.9.0",
+        "bootstrap":"3.x"
+    }
+}

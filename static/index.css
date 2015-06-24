@@ -1,11 +1,12 @@
 body {
+	margin:0 auto;
 	text-align:center;
 	font-family: 微软雅黑,serif;
 	#background: url(/static/background.jpg) fixed 0 0;
 	background-color: #c0c0c0;
 	background-size:cover;
-  height:2611px;
-  width:1887px;
+#  height:2611px;
+ # width:1887px;
 }
   
 a {
@@ -26,7 +27,7 @@ a {
 		color:#CCFFFF;
 		}
 .bigdiv {
-		margin:auto;
+		margin:0 auto;
 		width:600px;
     height:2611px;
 		}
