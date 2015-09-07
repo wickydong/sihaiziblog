@@ -13,9 +13,10 @@ def makesql():
         cur = con.cursor()
         cur.execute("select cpu,mem,disk,come from monitor where day like '%%%s%%'" %time)
         msg =  cur.fetchall()
+        #print msg
         for i in msg:
             cpu = i[0].encode("utf-8").lstrip(" ").split("%")[0].split(" ")[-1]
-            print cpu
+            #print cpu
             mem = i[1]
             disk = i[2].strip("\n")
             come = i[3]
